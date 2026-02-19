@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const { title, description, pubDate, updatedDate } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+        background: white;
+        color: #18181b;
+        margin: 0;
+      }
+
+      main {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 100px 24px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0 0 0.5em 0;
+        letter-spacing: -0.02em;
+      }
+
+      .date {
+        color: #71717a;
+        font-size: 0.9rem;
+        margin-bottom: 2em;
+      }
+
+      article {
+        line-height: 1.7;
+        font-size: 1.05rem;
+      }
+
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="date">
+        <FormattedDate date={pubDate} />
+        {updatedDate && (
+          <span> • Updated <FormattedDate date={updatedDate} /></span>
+        )}
+      </div>
+
+      <h1>{title}</h1>
+
+      <article>
+        <slot />
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+
+posts.sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - 
+  new Date(a.data.pubDate).valueOf()
+);
+---
+
+<html lang="en">
+  <head>
+    <title>Writing | Josh Estep</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+        background: white;
+        color: #18181b;
+        margin: 0;
+      }
+
+      main {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 100px 24px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 3rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 2rem;
+      }
+
+      a {
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: #18181b;
+      }
+
+      a:hover {
+        color: #71717a;
+      }
+
+      .date {
+        font-size: 0.9rem;
+        color: #71717a;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1>Writing</h1>
+
+      <ul>
+        {posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}`}>
+              {post.data.title}
+            </a>
+            <div class="date">
+              {new Date(post.data.pubDate).toLocaleDateString("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric"
+})}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>

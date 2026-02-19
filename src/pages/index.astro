@@ -1,0 +1,231 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+
+posts.sort((a, b) =>
+  new Date(b.data.pubDate).valueOf() -
+  new Date(a.data.pubDate).valueOf()
+);
+
+const recent = posts.slice(0, 5);
+---
+
+<html lang="en">
+  <head>
+    <title>Josh Estep</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+        background: white;
+        color: #18181b;
+        margin: 0;
+      }
+
+      main {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 100px 24px 140px;
+      }
+
+      /* NAV */
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 80px;
+      }
+
+      .home-link {
+        font-weight: 600;
+        text-decoration: none;
+        color: #18181b;
+        letter-spacing: -0.01em;
+      }
+
+      .nav-links a {
+        margin-left: 20px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: #71717a;
+      }
+
+      .nav-links a:hover {
+        color: #18181b;
+      }
+
+      /* INTRO SECTION */
+
+      .intro {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .intro-text h2 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      .intro-text p {
+        margin: 0 0 1rem 0;
+        color: #52525b;
+        line-height: 1.6;
+      }
+
+      .social a {
+        margin-right: 16px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: #71717a;
+      }
+
+      .social a:hover {
+        color: #18181b;
+      }
+
+      /* DIVIDER */
+
+      .divider {
+        height: 1px;
+        background: #f1f1f1;
+        margin-bottom: 3rem;
+      }
+
+      /* POSTS */
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 2.5rem;
+      }
+
+      .post-link {
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: #18181b;
+        position: relative;
+      }
+
+      .post-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0%;
+        height: 1px;
+        background: #18181b;
+        transition: width 0.2s ease;
+      }
+
+      .post-link:hover::after {
+        width: 100%;
+      }
+
+      .date {
+        font-size: 0.85rem;
+        color: #9ca3af;
+        margin-top: 6px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .avatar {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1.5rem;
+      }
+
+      .social {
+        margin-top: 1.25rem;
+      }
+
+      .social a {
+        margin-right: 18px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: #71717a;
+      }
+
+      .social a:hover {
+        color: #18181b;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <main>
+
+      <nav>
+        <a class="home-link" href="/">Josh Estep</a>
+        <div class="nav-links">
+          <a href="/blog">Writing</a>
+          <a href="/about">About</a>
+        </div>
+      </nav>
+
+      <div class="intro">
+        <img src="/profile.png" alt="Josh Estep" class="avatar" />
+
+        <div class="intro-text">
+          <h2>Hi, I'm Josh.</h2>
+
+          <p>
+            I work in IT leadership and build practical automation systems.
+            I write about technology, coaching youth sports, and lessons learned
+            from building resilient systems.
+          </p>
+
+          <div class="social">
+            <a href="https://github.com/joshestep" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/YOUR-LINK" target="_blank">LinkedIn</a>
+            <a href="mailto:your@email.com">Email</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <ul>
+        {recent.map((post) => (
+          <li>
+            <a class="post-link" href={`/blog/${post.id}`}>
+              {post.data.title}
+            </a>
+            <div class="date">
+              {new Date(post.data.pubDate).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric"
+              })}
+            </div>
+          </li>
+        ))}
+      </ul>
+
+
+    </main>
+  </body>
+</html>
