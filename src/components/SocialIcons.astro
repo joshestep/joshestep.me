@@ -37,12 +37,11 @@ const { links } = Astro.props;
           {link.label === "Twitter" && (
             <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
           )}
-          {link.label === "BlueSky" && (
-            <>
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 7v10M7 12h10" stroke="white" stroke-width="2" />
-            </>
-          )}
+          {instagram && (
+           <a href={instagram} target="_blank" rel="noopener noreferrer">
+            <path d="M7 2C4.8 2 3 3.8 3 6v12c0 2.2 1.8 4 4 4h10c2.2 0 4-1.8 4-4V6c0-2.2-1.8-4-4-4H7zm5 5.3A4.7 4.7 0 1 1 7.3 12 4.7 4.7 0 0 1 12 7.3zm6.2-.9a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/>
+          </svg>
+      )}
           {link.label === "RSS" && (
             <>
               <path d="M4 11a9 9 0 0 1 9 9" />

@@ -31,12 +31,12 @@ interface Site {
 
 // Site configuration
 export const SITE: Site = {
-  website: "https://steipete.me/",
-  author: "Peter Steinberger",
-  profile: "https://steipete.me/about",
-  desc: "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
-  title: "Peter Steinberger",
-  ogImage: "peter-avatar.jpg",
+  website: "https://joshestep.me/",
+  author: "Josh Estep",
+  profile: "https://joshestep.me/about",
+  desc: "Senior Network Engineer focused on network architecture, infrastructure automation, and resilient systems. Exploring AI agents for operational engineering.",
+  title: "Josh Estep",
+  ogImage: "profile.png", // Make sure this file exists in /public
   lightAndDarkMode: true,
   postPerIndex: 10,
   postPerPage: 10,
@@ -44,13 +44,13 @@ export const SITE: Site = {
   showArchives: false,
   showBackButton: false,
   editPost: {
-    enabled: true,
+    enabled: false,
     text: "Edit on GitHub",
-    url: "https://github.com/steipete/steipete.me/edit/main/",
+    url: "https://github.com/joshestep/joshestep.me/edit/main/",
   },
   dynamicOgImage: true,
   lang: "en",
-  timezone: "America/Los_Angeles",
+  timezone: "America/Chicago",
 };
 
 export const SITE_TITLE = SITE.title;
@@ -71,16 +71,16 @@ export const NAV_LINKS: SocialLink[] = [
 // Social media links
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: "https://github.com/steipete",
+    href: "https://github.com/joshestep",
     label: "GitHub",
   },
   {
-    href: "https://twitter.com/steipete",
+    href: "https://twitter.com/joshcestep",
     label: "Twitter",
   },
   {
-    href: "https://bsky.app/profile/steipete.me",
-    label: "BlueSky",
+    href: "https://instagram.com/joshestep",
+    label: "Instagram",
   },
   {
     href: "/rss.xml",
@@ -92,7 +92,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const ICON_MAP: Record<string, string> = {
   GitHub: "github",
   Twitter: "twitter",
-  BlueSky: "bsky",
+  Instagram: "instagram",
   RSS: "rss",
   Email: "mail",
 };

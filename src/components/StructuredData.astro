@@ -16,24 +16,24 @@ if (type === "BlogPosting") {
     description: data.description,
     author: {
       "@type": "Person",
-      name: data.author || "Peter Steinberger",
-      url: "https://steipete.me/about",
+      name: data.author || "Josh Estep",
+      url: "https://joshestep.me/about",
     },
     datePublished: data.pubDatetime.toISOString(),
     dateModified: data.modDatetime?.toISOString() || data.pubDatetime.toISOString(),
     publisher: {
       "@type": "Person",
-      name: "Peter Steinberger",
+      name: "Josh Estep",
       logo: {
         "@type": "ImageObject",
-        url: "https://steipete.me/peter-avatar.jpg",
+        url: "https://joshestep.me/profile.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": data.url,
     },
-    image: data.ogImage || "https://steipete.me/peter-avatar.jpg",
+    image: data.ogImage || "https://joshestep.me/profile.png",
     articleSection: data.tags?.[0] || "Technology",
     keywords: data.tags?.join(", ") || "",
     wordCount: data.wordCount,
@@ -43,15 +43,15 @@ if (type === "BlogPosting") {
   structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Peter Steinberger",
-    url: "https://steipete.me",
-    image: "https://steipete.me/peter-avatar.jpg",
+    name: "Josh Estep",
+    url: "https://joshestep.me",
+    image: "https://joshestep.me/profile.png",
     sameAs: [
-      "https://github.com/steipete",
-      "https://twitter.com/steipete",
-      "https://bsky.app/profile/steipete.me",
+      "https://github.com/joshestep",
+      "https://twitter.com/joshcestep",
+      "https://instagram.com/joshestep",
     ],
-    jobTitle: "Software Engineer",
+    jobTitle: "Senior Network Engineer",
     description:
       "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
   };
@@ -59,17 +59,17 @@ if (type === "BlogPosting") {
   structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Peter Steinberger",
-    url: "https://steipete.me",
+    name: "Josh Estep",
+    url: "https://joshestep.me",
     description:
       "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
     author: {
       "@type": "Person",
-      name: "Peter Steinberger",
+      name: "Josh Estep",
     },
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://steipete.me/search?q={search_term_string}",
+      target: "https://joshestep.me/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };
